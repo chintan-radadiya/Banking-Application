@@ -22,8 +22,12 @@ public class Accounts {
             ResultSet resultset = acCheckStatement.executeQuery();
 
             if (resultset.next()) {
+                acCheckStatement.close();
+                resultset.close();
                 return true;
             } else {
+                acCheckStatement.close();
+                resultset.close();
                 return false;
             }
         } catch (SQLException e) {
@@ -66,8 +70,10 @@ public class Accounts {
                 int row = openACstatement.executeUpdate();
 
                 if (row > 0) {
+                    openACstatement.close();
                     return account_number;
                 } else {
+                    openACstatement.close();
                     System.out.println("Account creation Failed!!");
                 }
             }
@@ -86,8 +92,16 @@ public class Accounts {
 
             if (resultSet.next()) {
             long last_ac = resultSet.getLong("ACC_NO");
+
+            statement.close();
+            resultSet.close();
+
                 return last_ac + 1;
             } else {
+
+                statement.close();
+                resultSet.close();
+
                 return 84440001;
             }
         } catch (SQLException e) {
@@ -106,13 +120,20 @@ public class Accounts {
 
             if (resultSet.next()){
             long ac = resultSet.getLong("ACC_NO");
+
+                getACstatement.close();
+                resultSet.close();
+
                 return ac;
             }else{
                 System.out.println("Account not found!!!");
+                getACstatement.close();
+                resultSet.close();
             }
         }catch (SQLException e){
             e.getMessage();
         }
         throw new RuntimeException("Account Not Found!!!");
+
     }
 }
