@@ -50,6 +50,7 @@ public class AccountManager {
                         }
                     } else {
                         System.out.println("Insufficient balance.");
+
                     }
                 }
             } else {
