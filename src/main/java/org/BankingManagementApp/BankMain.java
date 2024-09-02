@@ -136,6 +136,7 @@ public class BankMain {
                 default:
                     System.out.println("Invalid input!!");
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

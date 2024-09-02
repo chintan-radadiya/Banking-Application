@@ -51,7 +51,7 @@ public class User {
             } else {
                 System.out.println("Registration failed!!!");
             }
-
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -69,19 +69,23 @@ public class User {
             String loginQuery = "SELECT * FROM user WHERE EMAIL = ? AND PASSWORD = ?";
 
             PreparedStatement loginStatement = connection.prepareStatement(loginQuery);
-            loginStatement.setString(1,email);
-            loginStatement.setString(2,password);
+            loginStatement.setString(1, email);
+            loginStatement.setString(2, password);
             ResultSet resultSet = loginStatement.executeQuery();
 
-            if (resultSet.next()){
+            if (resultSet.next()) {
+                loginStatement.close();
+                resultSet.close();
                 return email;
-            }else {
+            } else {
+                loginStatement.close();
+                resultSet.close();
                 return null;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
@@ -95,15 +99,18 @@ public class User {
 
             if (resultSet.next()) {
                 statement.close();
+                resultSet.close();
                 return true;
 
             } else {
-
+                statement.close();
+                resultSet.close();
                 return false;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return false;
     }
 }
