@@ -24,9 +24,12 @@ Java<br>
 JDBC (Java Database Connectivity)<br>
 MySQL (or your preferred database system)<br>
 <br>
-📸 Screenshots<br>
-Screenshot <br>
 
-🤝 Contributing
-Contributions are welcome! Feel free to submit issues and pull requests.
+📸 Screenshots<br>
+1. User Table Schema <br>
+2. Accounts Table schema  <br>
+3. Table Queries  <br>
+
+🤝 Contributing <br>
+Contributions are welcome! Feel free to submit issues and pull requests <br>
 Happy coding! 🎉
